@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["inokappa"]
   spec.email         = ["inokara@gmail.com"]
 
-  spec.summary       = %q{seiton is a command line tool that allows you to remove unused AWS resources.}
-  spec.description   = %q{seiton is a command line tool that allows you to remove unused AWS resources.}
-  spec.homepage      = "https://github.com/inokappa/seiton"
+  spec.summary       = %q{The seiton (整頓) tidies up your AWS Resources.}
+  spec.description   = %q{The seiton (整頓) tidies up your AWS Resources.}
+  spec.homepage      = "https://github.com/oreno-tools/seiton"
 
   spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features|check)/}) }
