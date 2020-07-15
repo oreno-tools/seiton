@@ -1,4 +1,4 @@
-# seiton
+# seiton [![CircleCI](https://circleci.com/gh/oreno-tools/seiton.svg?style=svg)](https://circleci.com/gh/oreno-tools/seiton)
 
 The seiton (整頓) tidies up your AWS Resources.
 
