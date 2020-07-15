@@ -6,7 +6,7 @@ module Seiton
     end
 
     def generate
-      ignores = nil
+      ignores = []
       begin
         File.open(@file) do |file|
           file.read.split("\n").each do |ignore|
