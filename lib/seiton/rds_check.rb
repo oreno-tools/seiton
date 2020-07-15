@@ -11,8 +11,7 @@ ignore|<%= resouce.db_cluster_snapshot_identifier %>
 <%- end -%>
 <% end %>
 EOF
-      FileUtils.mkdir_p("check") unless FileTest.exist?("check")
-      File.open("check/" + "db_snapshots_list.txt", "w") do |file|
+      File.open("spec/" + "db_snapshots_list.txt", "w") do |file|
         file.puts ERB.new(template, nil, "-").result(binding).gsub(/^\n/, "")
       end
     end
