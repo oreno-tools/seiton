@@ -8,7 +8,6 @@ Add this line to your application's Gemfile:
 
 ```ruby
 gem 'seiton'
-gem 'rake' # require
 ```
 
 And then execute:
