@@ -17,7 +17,8 @@ end
 <%- end -%>
 <% end %>
 EOF
-      File.open("spec/" + "sqs_queue_spec.rb", "w") do |file|
+      FileUtils.mkdir_p("check") unless FileTest.exist?("check")
+      File.open("check/" + "sqs_queue_spec.rb", "w") do |file|
         file.puts "require 'spec_helper'"
         file.puts ERB.new(template, nil, "-").result(binding).gsub(/^\n/, "")
       end

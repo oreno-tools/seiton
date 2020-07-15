@@ -17,7 +17,8 @@ end
 <%- end -%>
 <% end %>
 EOF
-      File.open("spec/" + "ec2_instance_spec.rb", "w") do |file|
+      FileUtils.mkdir_p("check") unless FileTest.exist?("check")
+      File.open("check/" + "ec2_instance_spec.rb", "w") do |file|
         file.puts "require 'spec_helper'"
         file.puts ERB.new(template, nil, "-").result(binding).gsub(/^\n/, "")
       end
@@ -31,7 +32,8 @@ describe ebs("<%= resource.volume_id %>") do
 end
 <% end %>
 EOF
-      File.open("spec/" + "ec2_volumes_spec.rb", "w") do |file|
+      FileUtils.mkdir_p("check") unless FileTest.exist?("check")
+      File.open("check/" + "ec2_volumes_spec.rb", "w") do |file|
         file.puts "require 'spec_helper'"
         file.puts ERB.new(template, nil, "-").result(binding).gsub(/^\n/, "")
       end
@@ -54,7 +56,8 @@ end
 <%- end -%>
 <% end %>
 EOF
-      File.open("spec/" + "ec2_images_spec.rb", "w") do |file|
+      FileUtils.mkdir_p("check") unless FileTest.exist?("check")
+      File.open("check/" + "ec2_images_spec.rb", "w") do |file|
         file.puts "require 'spec_helper'"
         file.puts ERB.new(template, nil, "-").result(binding).gsub(/^\n/, "")
       end
@@ -89,7 +92,8 @@ end
 <%- end -%>
 <% end %>
 EOF
-      File.open("spec/" + "ec2_eips_spec.rb", "w") do |file|
+      FileUtils.mkdir_p("check") unless FileTest.exist?("check")
+      File.open("check/" + "ec2_eips_spec.rb", "w") do |file|
         file.puts "require 'spec_helper'"
         file.puts ERB.new(template, nil, "-").result(binding).gsub(/^\n/, "")
       end
