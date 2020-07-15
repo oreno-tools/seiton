@@ -23,13 +23,9 @@ Awsecrets.load(secrets_path: File.expand_path('./secrets.yml', File.dirname(__FI
       puts 'Write Rakefile...'
       rakefile = <<~RAKE_FILE
 require 'rspec/core/rake_task'
-require 'bundler/gem_tasks'
 require 'aws-sdk'
 require 'highline'
 require 'logger'
-
-RSpec::Core::RakeTask.new('spec')
-task :default => :spec
 
 namespace :check do
   targets1 = []

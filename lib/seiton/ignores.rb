@@ -1,5 +1,5 @@
 module Seiton
-  module Ignores
+  class Ignores
     def initialize(ignores_file, ignores_list)
       @file = ignores_file
       @list = inogres_list
