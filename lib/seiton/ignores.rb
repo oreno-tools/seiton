@@ -2,7 +2,7 @@ module Seiton
   class Ignores
     def initialize(ignores_file, ignores_list)
       @file = ignores_file
-      @list = inogres_list
+      @list = ignores_list
     end
 
     def generate
