@@ -7,14 +7,14 @@ module Seiton
     end
 
     def self.create_directory
-      puts 'Create check directory...'
-      FileUtils.mkdir_p('check') unless FileTest.exist?('check')
+      puts 'Create spec directory...'
+      FileUtils.mkdir_p('spec') unless FileTest.exist?('spec')
       spec_helper = <<~SPEC_HELPER
 require 'awspec'
 Awsecrets.load(secrets_path: File.expand_path('./secrets.yml', File.dirname(__FILE__)))
       SPEC_HELPER
 
-      File.open('check/spec_helper.rb', 'w') do |f| 
+      File.open('spec/spec_helper.rb', 'w') do |f|
         f.puts(spec_helper)
       end
     end
@@ -30,7 +30,7 @@ require 'logger'
 namespace :check do
   targets1 = []
   targets2 = []
-  Dir.glob(['./spec/*', './check/*']).each do |file|
+  Dir.glob(['./spec/*']).each do |file|
     target = File.basename(file)
     if target.include?('_spec.rb') then
       targets1 << File.basename(target, '_spec.rb')
@@ -44,7 +44,7 @@ namespace :check do
 
     RSpec::Core::RakeTask.new(target.to_sym) do |t|
       # t.rspec_opts = ["--format documentation", "--format html", "--out ./result_html/\#{target}_result.html"]
-      t.rspec_opts = ["--format documentation", "--format html", "--out ./result_html/\#{target}_result.html"]
+      t.rspec_opts = ["--format documentation"]
       t.pattern = "spec/\#{target}_spec.rb"
       t.verbose = true
     end if target != 'ec2_snapshot'
@@ -55,7 +55,7 @@ namespace :check do
     task target.to_sym do
       log.info('Check that ' + target + ' has been deleted.')
       resouces = []
-      File.open('./check/' + target + '_list.txt', "r") do |f|
+      File.open('./spec/' + target + '_list.txt', "r") do |f|
         f.each_line do |line|
           resouces << line.chomp
         end
