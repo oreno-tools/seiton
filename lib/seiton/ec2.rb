@@ -156,10 +156,10 @@ module Seiton
         exit 0
       end
 
-      ec2_snapshot(delete_image_ids)
+      ebs_snapshot(delete_image_ids)
     end
 
-    def ec2_snapshots(check = false, dt, ignores)
+    def ebs_snapshots(check = false, dt, ignores)
       if check
         log.info('List up the resources to be removed.')
       else
@@ -202,7 +202,7 @@ module Seiton
       end
 
       puts display_snapshot_resources(delete_snapshots)
-      generator_ec2_snapshots_check(delete_snapshots)
+      generator_ebs_snapshots_check(delete_snapshots)
       exit 0 if check
 
       delete_snapshot_ids = []
@@ -219,10 +219,10 @@ module Seiton
         exit 0
       end
 
-      ec2_snapshot(delete_image_ids)
+      ebs_snapshot(delete_image_ids)
     end
 
-    def ec2_snapshot(delete_image_ids)
+    def ebs_snapshot(delete_image_ids)
       log.info('Start EC2 Snapshot deleting.')
       res = ec2_client.describe_snapshots(owner_ids: [iam_user.arn.split(':')[4]])
       delete_snapshots = []
@@ -238,7 +238,7 @@ module Seiton
       end
 
       puts display_snapshot_resources(delete_snapshots)
-      generator_ec2_snapshots_check(delete_snapshots)
+      generator_ebs_snapshots_check(delete_snapshots)
 
       if process_ok?
         begin

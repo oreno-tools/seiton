@@ -60,13 +60,13 @@ EOF
       end
     end
 
-    def generator_ec2_snapshots_check(delete_resources)
+    def generator_ebs_snapshots_check(delete_resources)
       template = <<-'EOF'
 <% delete_resources.each do |resource| %>
 <%= resource.snapshot_id %>
 <% end %>
 EOF
-      File.open("spec/" + "ec2_snapshots_list.txt", "w") do |file|
+      File.open("spec/" + "ebs_snapshots_list.txt", "w") do |file|
         file.puts ERB.new(template, nil, "-").result(binding).gsub(/^\n/, "")
       end
     end

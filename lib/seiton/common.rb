@@ -38,25 +38,5 @@ module Seiton
       end
       volume_ids
     end
-
-    def ignores(ignores_file, ignore_list)
-      ignores = nil
-      begin
-        File.open(ignores_file) do |file|
-          file.read.split("\n").each do |ignore|
-            ignores << ignore
-          end
-        end
-      rescue SystemCallError => e
-        puts e.message
-        exit 1
-      rescue IOError => e
-        puts e.message
-        exit 1
-      end unless ignore_file.nil?
-      ignores.concat(ignore_list) unless ignore_list.nil?
-
-      ignores
-    end
   end
 end

@@ -30,7 +30,7 @@ $ gem install seiton
 $ bundle exec seiton --help
 Commands:
   seiton ami             # Delete the EC2 AMI.
-  seiton ec2_snapshot    # Delete the EC2 Snapshot.
+  seiton ebs_snapshot    # Delete the EC2 Snapshot.
   seiton eip             # Delete the Elastic IP.
   seiton help [COMMAND]  # Describe available commands or one specific command
   seiton init            # Initialize seiton.
@@ -38,6 +38,12 @@ Commands:
   seiton rds_snapshot    # Delete the RDS Snapshot.
   seiton sqs_queue       # Delete the SQS Queue.
   seiton version         # Print the version number.
+
+Options:
+  -b, [--before-datetime=BEFORE_DATETIME]  # Specify the date and time for deletion (delete resources before the specified date and time.)
+  -i, [--ignores=one two three]            # Specify resources to be undeleted (you can specify multiple resources).
+      [--ignores-file=IGNORES_FILE]        # Specify file name for resources list to be undeleted.
+  -c, [--check], [--no-check]              # Check the resources to be deleted.
 ```
 
 ### Init
