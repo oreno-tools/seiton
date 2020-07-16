@@ -107,7 +107,7 @@ bundle exec seiton ami --before-datetime=2020/01/01 --ignores=xxxx yyyy zzzz
 
 ```sh
 bundle exec rake check:ec2_images    # AMI 
-bundle exec rake check:ec2_snapshots # Snapshot
+bundle exec rake check:ebs_snapshots # Snapshot
 ```
 
 ### Delete EIP
@@ -238,9 +238,9 @@ bundle exec rake check:db_snapshots  # RDS Snapshot
 #### help
 
 ```sh
-$ bundle exec seiton --help ec2_snapshot
+$ bundle exec seiton --help ebs_snapshot
 Usage:
-  seiton ec2_snapshot
+  seiton ebs_snapshot
 
 Options:
   -b, [--before-datetime=BEFORE_DATETIME]  # Specify the date and time for deletion (delete resources before the specified date and time.)
@@ -253,25 +253,25 @@ Delete the EC2 Snapshot.
 #### check
 
 ```sh
-bundle exec seiton ec2_snapshot --before-datetime=2020/01/01 --check
+bundle exec seiton ebs_snapshot --before-datetime=2020/01/01 --check
 ```
 
 #### delete
 
 ```sh
-bundle exec seiton ec2_snapshot --before-datetime=2020/01/01
+bundle exec seiton ebs_snapshot --before-datetime=2020/01/01
 ```
 
 #### ignore
 
 ```sh
-bundle exec seiton ec2_snapshot --before-datetime=2020/01/01 --ignores=xxxx yyyy zzzz
+bundle exec seiton ebs_snapshot --before-datetime=2020/01/01 --ignores=xxxx yyyy zzzz
 ```
 
 #### Testing for delete complete
 
 ```sh
-bundle exec rake check:ec2_snapshots  # EC2 Snapshot
+bundle exec rake check:ebs_snapshots  # EC2 Snapshot
 ```
 
 ### Delete SQS Queue
