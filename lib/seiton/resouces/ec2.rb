@@ -102,7 +102,8 @@ module Seiton
       end
       res = ec2_client.describe_images({ owners: ['self'] })
       delete_images = []
-      res.images.each do |delete_image|
+      _images = res.images.sort_by { |x| x.creation_date }
+      _images.each do |delete_image|
         if datetime_parse(delete_image.creation_date) < datetime_parse(dt)
           delete_images << delete_image
         end
@@ -167,7 +168,8 @@ module Seiton
       end
       res = ec2_client.describe_snapshots({ owner_ids: ['self'] })
       delete_snapshots = []
-      res.snapshots.each do |delete_snapshot|
+      _snapshots = res.snapshots.sort_by { |x| x.start_time }
+      _snapshots.each do |delete_snapshot|
         if datetime_parse(delete_snapshot.start_time) < datetime_parse(dt)
           delete_snapshots << delete_snapshot
         end

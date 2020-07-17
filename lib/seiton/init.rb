@@ -47,7 +47,7 @@ namespace :check do
       t.rspec_opts = ["--format documentation"]
       t.pattern = "spec/\#{target}_spec.rb"
       t.verbose = true
-    end if target != 'ec2_snapshot'
+    end if target != 'ebs_snapshot'
   end
 
   targets2.each do |target|
