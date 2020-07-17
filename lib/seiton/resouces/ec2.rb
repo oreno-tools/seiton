@@ -211,7 +211,7 @@ module Seiton
       if process_ok?
         begin
           delete_snapshots.each do |s|
-            delete_snapshot_ids << s.snaphost_id
+            delete_snapshot_action(s.snapshot_id)
           end
         rescue StandardError => e
           log.error(e)
@@ -220,8 +220,6 @@ module Seiton
       else
         exit 0
       end
-
-      ebs_snapshot(delete_image_ids)
     end
 
     def ebs_snapshot(delete_image_ids)

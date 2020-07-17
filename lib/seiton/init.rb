@@ -95,7 +95,7 @@ def ignore_resource?(resource)
   return r, deleted, not_deleted
 end
 
-def check_ec2_snapshots(resouces)
+def check_ebs_snapshots(resouces)
   resouces.each do |resouce|
     r, deleted, not_deleted = ignore_resource?(resouce)
     begin
